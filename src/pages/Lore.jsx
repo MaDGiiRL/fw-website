@@ -1,6 +1,7 @@
 import { Section } from "../components/Section.jsx";
 import logo from "../../src/assets/logo.gif";
 import { ScrollText, Stars, Wand2, LifeBuoy } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Lore() {
   const TEAM = [
@@ -67,12 +68,39 @@ export default function Lore() {
       ring: "group-hover:ring-[#A69981]/40",
     };
 
+  // Variants Framer Motion (accessibili)
+  const reduce = useReducedMotion();
+  const fadeUp = {
+    hidden: { opacity: 0, y: reduce ? 0 : 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+  const fadeIn = {
+    hidden: { opacity: 0, scale: reduce ? 1 : 0.98 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+  const stagger = (delay = 0.05, step = 0.08) => ({
+    hidden: {},
+    show: { transition: { delayChildren: delay, staggerChildren: step } },
+  });
+
   return (
     <div>
       <Section title="Cronache della Caduta" kicker="lore">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+          variants={stagger(0.05, 0.1)}
+          initial="hidden"
+          animate="show"
+        >
           {/* LORE */}
-          <article className="lg:col-span-6 space-y-6 text-[#D9CAB8]/85 p-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/50">
+          <motion.article
+            className="lg:col-span-6 space-y-6 text-[#D9CAB8]/85 p-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/50"
+            variants={fadeIn}
+          >
             <p className="text-[#A69981] uppercase tracking-wider text-sm">
               {" "}
               Prologo{" "}
@@ -162,12 +190,18 @@ export default function Lore() {
               abbandonate ma intatte. Era come se il virus si fosse{" "}
               <em>autodistrutto</em>… o fosse stato <em>richiamato</em>.{" "}
             </p>
-          </article>
+          </motion.article>
 
           {/* TEAM LORE — colorato per gruppo */}
-          <aside className="lg:col-span-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/50 overflow-hidden">
+          <motion.aside
+            className="lg:col-span-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/50 overflow-hidden"
+            variants={fadeIn}
+          >
             {/* Header con logo + badge legenda */}
-            <div className="p-6 border-b border-[#262520] bg-[radial-gradient(60%_80%_at_50%_0%,#1a1916_0%,transparent_70%)]">
+            <motion.div
+              className="p-6 border-b border-[#262520] bg-[radial-gradient(60%_80%_at_50%_0%,#1a1916_0%,transparent_70%)]"
+              variants={fadeUp}
+            >
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-[#D9CAB8]">
@@ -177,36 +211,48 @@ export default function Lore() {
                     Coerenza narrativa, timeline e approvazioni di trama.
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {TEAM.map((b) => {
+                    {TEAM.map((b, i) => {
                       const { chip, Icon } = getStyle(b.group);
                       return (
-                        <span
+                        <motion.span
                           key={b.group}
                           className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] rounded-full border ${chip}`}
+                          variants={fadeUp}
+                          transition={{ delay: 0.03 * i }}
                         >
                           <Icon className="w-3.5 h-3.5" />
                           {b.group}
-                        </span>
+                        </motion.span>
                       );
                     })}
                   </div>
                 </div>
 
-                <img
+                <motion.img
                   src={logo}
                   alt="Logo Team Lore"
                   loading="lazy"
                   className="shrink-0 ml-auto block w-16 sm:w-20 md:w-24 rounded-xl opacity-80 hover:opacity-100 transition-opacity object-contain"
+                  variants={fadeUp}
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Liste per gruppo, con glow e badge per gruppo */}
-            <div className="p-6 space-y-6">
+            <motion.div
+              className="p-6 space-y-6"
+              variants={stagger(0.05, 0.09)}
+              initial="hidden"
+              animate="show"
+            >
               {TEAM.map((block, idx) => {
                 const { Icon, chip, glow, ring } = getStyle(block.group);
                 return (
-                  <section key={block.group} className="space-y-4">
+                  <motion.section
+                    key={block.group}
+                    className="space-y-4"
+                    variants={fadeUp}
+                  >
                     <div className="inline-flex items-center gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-full border ${chip}`}
@@ -220,11 +266,17 @@ export default function Lore() {
                       </span>
                     </div>
 
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {block.names.map((name) => (
-                        <li
+                    <motion.ul
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                      variants={stagger(0.02, 0.06)}
+                      initial="hidden"
+                      animate="show"
+                    >
+                      {block.names.map((name, i) => (
+                        <motion.li
                           key={name}
                           className="group relative rounded-xl border border-[#262520] bg-[#0D0C0A]/60 hover:bg-[#0D0C0A]/80 transition"
+                          variants={fadeUp}
                         >
                           {/* Glow radiale colorato */}
                           <span
@@ -249,24 +301,29 @@ export default function Lore() {
                               {block.group.replace("Supporto ", "")}
                             </span>
                           </div>
-                        </li>
+                        </motion.li>
                       ))}
-                    </ul>
+                    </motion.ul>
 
                     {idx < TEAM.length - 1 && (
                       <div className="h-px bg-gradient-to-r from-transparent via-[#262520] to-transparent my-2" />
                     )}
-                  </section>
+                  </motion.section>
                 );
               })}
-            </div>
+            </motion.div>
 
-            <blockquote className="border-l-2 border-[#736751]/40 pl-4 italic text-[#D9CAB8]/70 p-5 mt-3">
+            <motion.blockquote
+              className="border-l-2 border-[#736751]/40 pl-4 italic text-[#D9CAB8]/70 p-5 mt-3"
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+            >
               «Non sappiamo chi abbia combattuto, né cosa. Sappiamo solo che il
               silenzio non è pace: è attesa.»
-            </blockquote>
-          </aside>
-        </div>
+            </motion.blockquote>
+          </motion.aside>
+        </motion.div>
       </Section>
     </div>
   );

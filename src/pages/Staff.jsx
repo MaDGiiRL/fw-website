@@ -9,6 +9,7 @@ import {
   Code2,
   Sparkles, // <- NEW
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 /** Mappa ruoli → icona + glow + badge */
 const GROUPS = [
@@ -149,10 +150,35 @@ const GROUPS = [
 ];
 
 export default function Staff() {
+  const reduce = useReducedMotion();
+
+  // Variants accessibili
+  const fadeUp = {
+    hidden: { opacity: 0, y: reduce ? 0 : 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  };
+  const fadeIn = {
+    hidden: { opacity: 0, scale: reduce ? 1 : 0.98 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+  const stagger = (delay = 0.05, step = 0.08) => ({
+    hidden: {},
+    show: { transition: { delayChildren: delay, staggerChildren: step } },
+  });
+
   return (
     <Section title="Staff">
       {/* Callout simpatia/sintonia */}
-      <div className="relative mb-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/60 p-4 overflow-hidden">
+      <motion.div
+        className="relative mb-6 rounded-2xl border border-[#262520] bg-[#0D0C0A]/60 p-4 overflow-hidden"
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
+      >
         <span className="pointer-events-none absolute -inset-1 opacity-30 blur-lg bg-[radial-gradient(closest-side,rgba(166,153,129,0.25),transparent)]" />
         <div className="relative flex items-start gap-3">
           <span className="inline-grid w-9 h-9 place-items-center rounded-lg bg-[#262520] border border-[#736751]/40 text-[#A69981]">
@@ -167,11 +193,16 @@ export default function Staff() {
             <span className="text-[#A69981]">Fallen World</span> ogni giorno.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="space-y-8">
-        {GROUPS.map(({ label, Icon, members, glow, chipClass }) => (
-          <section key={label} className="space-y-4">
+      <motion.div
+        className="space-y-8"
+        variants={stagger(0.05, 0.1)}
+        initial="hidden"
+        animate="show"
+      >
+        {GROUPS.map(({ label, Icon, members, glow, chipClass }, gi) => (
+          <motion.section key={label} className="space-y-4" variants={fadeUp}>
             {/* Header gruppo con badge */}
             <header className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
@@ -190,11 +221,18 @@ export default function Staff() {
             </header>
 
             {/* Griglia membri */}
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <motion.ul
+              className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+              variants={stagger(0.02, 0.06)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               {members.map((m) => (
-                <li
+                <motion.li
                   key={`${label}-${m.name}`}
                   className="group relative rounded-2xl border border-[#262520] bg-[#0D0C0A]/50 overflow-hidden transition-transform duration-300 hover:scale-[1.02] hover:bg-[#0D0C0A]/70 min-h-[160px]"
+                  variants={fadeUp}
                 >
                   {/* Glow radiale on hover */}
                   <span
@@ -235,12 +273,12 @@ export default function Staff() {
                   <span className="pointer-events-none absolute bottom-3 right-3 text-[#A69981]/60">
                     <Icon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" />
                   </span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </section>
+            </motion.ul>
+          </motion.section>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 }

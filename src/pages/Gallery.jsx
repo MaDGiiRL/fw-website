@@ -4,6 +4,7 @@ import { Section } from "../components/Section.jsx";
 import DiscordBanner from "../components/DiscordBanner.jsx";
 import heroBg from "../assets/banner.png";
 import logo from "../assets/logo.gif";
+import { motion, useReducedMotion } from "framer-motion";
 
 const IMGS = [
   "https://i.imgur.com/Qg8KMKY.png",
@@ -55,17 +56,37 @@ export default function Gallery() {
     };
   }, []);
 
+  // Framer Motion variants (rispettano prefers-reduced-motion)
+  const reduce = useReducedMotion();
+  const fadeIn = {
+    hidden: { opacity: 0, y: reduce ? 0 : 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+  const stagger = (delay = 0.05, step = 0.06) => ({
+    hidden: {},
+    show: { transition: { delayChildren: delay, staggerChildren: step } },
+  });
+
   return (
     <Section title="Gallery" kicker="FALLEN V1">
-      <section
+      <motion.section
         className="max-w-7xl mx-auto px-4 py-8"
         title="Galleria"
         kicker="feature"
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
       >
         {/* Griglia immagini */}
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <motion.ul
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          variants={stagger(0.05, 0.07)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {IMGS.map((src, i) => (
-            <li key={i}>
+            <motion.li key={i} variants={fadeIn}>
               <button
                 onClick={() => {
                   setIdx(i);
@@ -109,9 +130,9 @@ export default function Gallery() {
                   </span>
                 </div>
               </button>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
         {/* Lightbox */}
         <Lightbox
@@ -121,7 +142,7 @@ export default function Gallery() {
           setIdx={setIdx}
           items={IMGS}
         />
-      </section>
+      </motion.section>
     </Section>
   );
 }

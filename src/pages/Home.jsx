@@ -11,19 +11,51 @@ import {
   Leaf,
   Lock,
 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Home() {
+  const reduceMotion = useReducedMotion();
+
+  // Variants riutilizzabili (soft, accessibili)
+  const fadeIn = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+  const popIn = {
+    hidden: { opacity: 0, scale: reduceMotion ? 1 : 0.96 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+  const stagger = (delay = 0.05, step = 0.14) => ({
+    hidden: {},
+    show: { transition: { delayChildren: delay, staggerChildren: step } },
+  });
+
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-2xl max-w-7xl mx-auto">
+      <motion.section
+        className="relative overflow-hidden rounded-2xl max-w-7xl mx-auto"
+        variants={popIn}
+        initial="hidden"
+        animate="show"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(60%_80%_at_50%_0%,#262520_0%,transparent_60%)]" />
         <div className="absolute inset-0 texture opacity-20" />
 
         <div className="relative z-10 p-6 sm:p-12">
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
             {/* Contenuto sinistra */}
-            <div className="flex-1 flex flex-col gap-4">
+            <motion.div
+              className="flex-1 flex flex-col gap-4"
+              variants={fadeIn}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.15 }}
+            >
               <span className="inline-flex w-max px-3 py-1 rounded-full border border-[#736751]/40 text-[#D9CAB8]/90 text-xs tracking-wider backdrop-blur">
                 FiveM Roleplay • Urban Fantasy
               </span>
@@ -34,7 +66,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="max-w-2xl text-[#D9CAB8]/80">
-                Dalle ceneri di un mondo spezzato emergono nuove fazioni,
+                Dalle ceneri di un mondo spezzato emergono nuove fazzioni,
                 rituali arcani e tecnologie proibite. Tra rovine illuminate da
                 neon tremolanti e antiche magie risvegliate, ogni scelta
                 scriverà il destino del tuo personaggio.
@@ -53,21 +85,31 @@ export default function Home() {
                   Scopri la Storia
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* Logo destra */}
-            <img
+            <motion.img
               src={logo}
               alt="Fallen World logo"
               loading="lazy"
               className="shrink-0 w-full max-w-[14rem] sm:max-w-[18rem] h-auto rounded-2xl opacity-70 hover:opacity-100 transition-opacity duration-300 object-contain"
+              variants={popIn}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.3 }}
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <Section title="Cosa ti aspetta" kicker="feature">
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.ul
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          variants={stagger(0.05, 0.14)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+        >
           {[
             {
               t: "Comunità Rinata",
@@ -85,8 +127,9 @@ export default function Home() {
               Icon: Coins,
             },
           ].map((f, i) => (
-            <li
+            <motion.li
               key={i}
+              variants={fadeIn}
               className="group p-4 rounded-xl border border-[#262520] bg-[#0D0C0A]/40 hover:bg-[#262520]/40 transition"
             >
               <div className="flex items-start gap-3">
@@ -109,13 +152,19 @@ export default function Home() {
                   <p className="text-sm text-[#D9CAB8]/75">{f.d}</p>
                 </div>
               </div>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </Section>
 
       <Section title="Comunità" kicker="feature">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          variants={stagger(0.05, 0.12)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {[
             {
               t: "Faro",
@@ -156,7 +205,7 @@ export default function Home() {
             {
               t: "Castelleto",
               d: "Antico borgo fortificato, ora rifugio tra mura crepate e rituali al chiaro di luna.",
-              tags: ["BIT"],
+              tags: ["BIT", "OCCUPATA"],
             },
             {
               t: "Diga",
@@ -205,8 +254,9 @@ export default function Home() {
               : "bg-[radial-gradient(closest-side,rgba(74,222,128,0.55),transparent)]"; // green-400
 
             return (
-              <article
+              <motion.article
                 key={i}
+                variants={fadeIn}
                 className="group relative p-4 rounded-xl border border-[#262520] bg-[#0D0C0A]/50 hover:bg-[#0D0C0A]/70 transition"
               >
                 <div className="flex items-start justify-between gap-3">
@@ -248,13 +298,19 @@ export default function Home() {
                     <p className="text-sm text-[#D9CAB8]/75 mt-2">{c.d}</p>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </Section>
 
-      <div className="max-w-7xl mx-auto p-4 space-y-8">
+      <motion.div
+        className="max-w-7xl mx-auto p-4 space-y-8"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <DiscordBanner
           bgSrc={heroBg}
           logoSrc={logo}
@@ -263,7 +319,7 @@ export default function Home() {
           inviteUrl="https://discord.gg/il-tuo-invito"
           buttonText="Unisciti ora"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

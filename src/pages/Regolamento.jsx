@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import logo from "../../src/assets/logo.gif";
 import heroBg from "../assets/banner.png";
 import DiscordBanner from "../components/DiscordBanner.jsx";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const DATA = {
   Generale: {
@@ -148,9 +149,39 @@ export default function Regolamento() {
 
   const rules = DATA[activeType][derivedCategory] ?? [];
 
+  // Variants riutilizzabili + rispetto prefers-reduced-motion
+  const reduce = useReducedMotion();
+  const fadeUp = {
+    hidden: { opacity: 0, y: reduce ? 0 : 16 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+    exit: { opacity: 0, y: reduce ? 0 : -12, transition: { duration: 0.25 } },
+  };
+  const fadeIn = {
+    hidden: { opacity: 0, scale: reduce ? 1 : 0.98 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      scale: reduce ? 1 : 0.98,
+      transition: { duration: 0.25 },
+    },
+  };
+  const stagger = (delay = 0.05, step = 0.06) => ({
+    hidden: {},
+    show: { transition: { delayChildren: delay, staggerChildren: step } },
+  });
+
   return (
     <section className="max-w-7xl mx-auto pt-4 mt-4">
-      <div className="max-w-7xl mx-auto p-4 space-y-8 mb-7">
+      <motion.div
+        className="max-w-7xl mx-auto p-4 space-y-8 mb-7"
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+      >
         <DiscordBanner
           bgSrc={heroBg}
           logoSrc={logo}
@@ -159,18 +190,21 @@ export default function Regolamento() {
           inviteUrl="https://discord.gg/il-tuo-invito"
           buttonText="Unisciti ora"
         />
-      </div>
+      </motion.div>
 
       {/* TOP NAV */}
-      <nav
+      <motion.nav
         aria-label="Tipi di regolamento"
         className="sticky top-[4.5rem] z-40 bg-[#0D0C0A]/80 backdrop-blur border border-[#262520] rounded-2xl p-3 mb-6"
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
       >
         <div className="flex flex-wrap items-center gap-2">
           {types.map((t) => {
             const isActive = activeType === t;
             return (
-              <button
+              <motion.button
                 key={t}
                 type="button"
                 onClick={() => {
@@ -178,6 +212,8 @@ export default function Regolamento() {
                   setActiveCategory(Object.keys(DATA[t])[0]);
                 }}
                 aria-pressed={isActive}
+                whileTap={{ scale: reduce ? 1 : 0.98 }}
+                whileHover={{ y: reduce ? 0 : -1 }}
                 className={`px-3 py-2 rounded-xl text-sm border focus:outline-none focus:ring-2 focus:ring-[#736751]/60 ${
                   isActive
                     ? "bg-[#262520] border-[#736751] text-[#D9CAB8]"
@@ -185,57 +221,71 @@ export default function Regolamento() {
                 }`}
               >
                 {t}
-              </button>
+              </motion.button>
             );
           })}
         </div>
-      </nav>
+      </motion.nav>
 
       {/* LAYOUT */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* SIDEBAR CATEGORIE */}
         <aside className="lg:col-span-4 xl:col-span-3">
-          <div className="sticky top-[9.5rem] border border-[#262520] rounded-2xl bg-[#0D0C0A]/60 p-3">
-
+          <motion.div
+            className="sticky top-[9.5rem] border border-[#262520] rounded-2xl bg-[#0D0C0A]/60 p-3"
+            variants={fadeIn}
+            initial="hidden"
+            animate="show"
+          >
             <h2 className="text-sm font-semibold text-[#D9CAB8] mb-2">
               {activeType} · Categorie
             </h2>
 
-            <ul className="space-y-1">
-              {categories.map((cat) => {
-                const isActive = derivedCategory === cat;
-                const count = DATA[activeType][cat].length;
-                return (
-                  <li key={cat}>
-                    <button
-                      type="button"
-                      onClick={() => setActiveCategory(cat)}
-                      className={`w-full text-left px-3 py-2 rounded-xl border transition ${
-                        isActive
-                          ? "bg-[#736751] text-[#0D0C0A] border-[#736751]"
-                          : "border-[#262520] hover:bg-[#262520]/60 text-[#D9CAB8]/90"
-                      }`}
-                    >
-                      <span className="inline-flex items-center gap-2">
-                        <span>{cat}</span>
-                        <span
-                          className={`text-[11px] px-2 py-0.5 rounded-md border ${
-                            isActive
-                              ? "border-[#0D0C0A]/20 bg-[#0D0C0A]/10 text-[#0D0C0A]"
-                              : "border-[#262520] text-[#A69981]"
-                          }`}
-                          aria-label={`${count} regole`}
-                          title={`${count} regole`}
-                        >
-                          {count}
+            {/* Cambia animando quando cambia 'activeType' */}
+            <AnimatePresence mode="wait">
+              <motion.ul
+                key={activeType}
+                className="space-y-1"
+                variants={stagger(0.02, 0.05)}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+              >
+                {categories.map((cat) => {
+                  const isActive = derivedCategory === cat;
+                  const count = DATA[activeType][cat].length;
+                  return (
+                    <motion.li key={cat} variants={fadeUp}>
+                      <button
+                        type="button"
+                        onClick={() => setActiveCategory(cat)}
+                        className={`w-full text-left px-3 py-2 rounded-xl border transition ${
+                          isActive
+                            ? "bg-[#736751] text-[#0D0C0A] border-[#736751]"
+                            : "border-[#262520] hover:bg-[#262520]/60 text-[#D9CAB8]/90"
+                        }`}
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          <span>{cat}</span>
+                          <span
+                            className={`text-[11px] px-2 py-0.5 rounded-md border ${
+                              isActive
+                                ? "border-[#0D0C0A]/20 bg-[#0D0C0A]/10 text-[#0D0C0A]"
+                                : "border-[#262520] text-[#A69981]"
+                            }`}
+                            aria-label={`${count} regole`}
+                            title={`${count} regole`}
+                          >
+                            {count}
+                          </span>
                         </span>
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+                      </button>
+                    </motion.li>
+                  );
+                })}
+              </motion.ul>
+            </AnimatePresence>
+          </motion.div>
         </aside>
 
         {/* CONTENUTO */}
@@ -250,26 +300,42 @@ export default function Regolamento() {
             </p>
           </header>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            {rules.map((rule, i) => (
-              <div
-                key={i}
-                className="p-4 rounded-xl border border-[#262520] bg-[#0D0C0A]/50"
-              >
-                <div className="flex gap-3">
-                  <span className="w-8 h-8 shrink-0 rounded-lg bg-[#262520] grid place-items-center text-[#A69981] font-semibold">
-                    {i + 1}
-                  </span>
-                  <p className="text-[#D9CAB8]/90">{rule}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Lista regole: transizione su cambio categoria e tipo */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${activeType}-${derivedCategory}`}
+              className="grid md:grid-cols-2 gap-4"
+              variants={stagger(0.03, 0.06)}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+            >
+              {rules.map((rule, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="p-4 rounded-xl border border-[#262520] bg-[#0D0C0A]/50"
+                >
+                  <div className="flex gap-3">
+                    <span className="w-8 h-8 shrink-0 rounded-lg bg-[#262520] grid place-items-center text-[#A69981] font-semibold">
+                      {i + 1}
+                    </span>
+                    <p className="text-[#D9CAB8]/90">{rule}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
-          <p className="mt-6 text-sm text-[#D9CAB8]/70">
+          <motion.p
+            className="mt-6 text-sm text-[#D9CAB8]/70"
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+          >
             Nota: lo staff può aggiornare il regolamento in qualsiasi momento
             per garantire un gioco equo e immersivo.
-          </p>
+          </motion.p>
         </main>
       </div>
     </section>
