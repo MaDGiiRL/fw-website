@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --c-bg: #0D0C0A;
+  /* base */
+  --c-ink: #D9CAB8;
+  /* text */
+  --c-mid: #262520;
+  /* panels */
+  --c-acc: #736751;
+  /* accent */
+  --c-soft: #A69981;
+  /* soft accent */
+}
+
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Rajdhani', 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+
+body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+}
+
+
+/* Subtle texture & glass effect */
+.texture {
+  background-image: radial-gradient(circle at 1px 1px, rgba(166, 153, 129, 0.12) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(38, 37, 32, 0.35), rgba(13, 12, 10, 0.35));
+  backdrop-filter: blur(6px);
+}
+
+.card {
+  box-shadow: 0 1px 0 #262520 inset, 0 0 0 1px #262520;
+}
+
+
+/* Neon-ish underline utility */
+.neon-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: rgba(166, 153, 129, 0.65);
+}
+
+
+/* Custom scrollbars */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0D0C0A;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #262520;
+  border: 2px solid #0D0C0A;
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #736751;
+}
+
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px dashed #736751;
+  outline-offset: 2px;
+}
+
+
+/* Lightbox image smooth */
+img {
+  image-rendering: auto;
+}
+
+
+.badge {
+  padding: 2px 8px;
+  font-size: 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(115, 103, 81, 0.4);
+  color: #a69981;
+}
