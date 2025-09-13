@@ -23,7 +23,6 @@ export default function Lore() {
         "Paranoica 🌙",
         "MaDGiiRL",
         "Violetzxヅ",
-        "Defazeu",
         "Anastasia",
         "Snooky 🐼",
         "Chesy",

@@ -90,11 +90,6 @@ const GROUPS = [
     chipClass: "text-pink-300 border-pink-400/40",
     members: [
       {
-        name: "Defazeu",
-        role: "Admin",
-        bio: "Il più peperino: pungente quanto basta.",
-      },
-      {
         name: "Kiwy",
         role: "Admin",
         bio: "Sempre pronto a scherzare: bug fix con battuta incorporata.",

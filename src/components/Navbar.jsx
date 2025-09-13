@@ -46,6 +46,14 @@ export default function Navbar() {
             Lore
           </NavLink>
           <NavLink
+            to="/creature"
+            className={({ isActive }) =>
+              `${navLink} ${isActive ? "bg-[#262520]" : ""}`
+            }
+          >
+            Creature
+          </NavLink>
+          <NavLink
             to="/gallery"
             className={({ isActive }) =>
               `${navLink} ${isActive ? "bg-[#262520]" : ""}`
@@ -116,7 +124,6 @@ export default function Navbar() {
           </div>
         </details>
       </div>
-
     </header>
   );
 }
