@@ -7,7 +7,8 @@ import {
   ClipboardList,
   Hammer,
   Code2,
-  Sparkles, // <- NEW
+  Sparkles,
+  HelpingHand, // <-- NEW
 } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -94,6 +95,16 @@ const GROUPS = [
         role: "Admin",
         bio: "Sempre pronto a scherzare: bug fix con battuta incorporata.",
       },
+      {
+        name: "Gondola",
+        role: "Admin",
+        bio: "Anima dolce e gentile: calma i flame con una carezza.",
+      },
+      {
+        name: "Paranoica.",
+        role: "Admin",
+        bio: "Silenziosa ma si sente: entra piano, sistema tutto e scompare.",
+      },
     ],
   },
   {
@@ -112,16 +123,6 @@ const GROUPS = [
         role: "HeadMod",
         bio: "L’amico del cazzeggio: meme di qualità, moderazione quando serve.",
       },
-      {
-        name: "Gondola",
-        role: "HeadMod",
-        bio: "Anima dolce e gentile: calma i flame con una carezza.",
-      },
-      {
-        name: "Paranoica.",
-        role: "HeadMod",
-        bio: "Silenziosa ma si sente: entra piano, sistema tutto e scompare.",
-      },
     ],
   },
   {
@@ -139,6 +140,24 @@ const GROUPS = [
         name: "Jhonno",
         role: "Mod",
         bio: "Competente e simpatico: risolve e fa ridere nello stesso minuto.",
+      },
+    ],
+  },
+  {
+    label: "HELPER",
+    Icon: HelpingHand,
+    glow: "bg-[radial-gradient(closest-side,rgba(20,184,166,0.45),transparent)]", // teal
+    chipClass: "text-teal-300 border-teal-400/40",
+    members: [
+      {
+        name: "Katra",
+        role: "Helper",
+        bio: "Tipetto simpatico con grande senso dell'umorismo.",
+      },
+      {
+        name: "Shino",
+        role: "Helper",
+        bio: "Dal tono di voce soave, in full mood RP.",
       },
     ],
   },
@@ -226,7 +245,7 @@ export default function Staff() {
               {members.map((m) => (
                 <motion.li
                   key={`${label}-${m.name}`}
-                  className="group relative rounded-2xl border border-[#262520] bg-[#0D0C0A]/50 overflow-hidden transition-transform duration-300 hover:scale-[1.02] hover:bg-[#0D0C0A]/70 min-h-[160px]"
+                  className="group relative rounded-2xl border border-[#262520] bg-[#0D0C0A]/50 overflow-hidden transition-transform duration-300 hover:scale-[1.02] hover:bg-[#0D0C0A]/70 min-h[160px]"
                   variants={fadeUp}
                 >
                   {/* Glow radiale on hover */}
