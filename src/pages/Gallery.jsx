@@ -95,23 +95,6 @@ export default function Gallery() {
 
   return (
     <>
-      {/* ====== SOCIAL (Instagram, card a palette scura) ====== */}
-      <Section title="Social" kicker="Instagram">
-        <motion.section
-          className="max-w-7xl mx-auto px-4 py-8"
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <InstagramEmbedsFixed
-            postUrls={INSTAGRAM_POSTS}
-            cols={{ base: 1, md: 2, lg: 3 }}
-            height="34rem" // puoi cambiare l’altezza fissa
-          />
-        </motion.section>
-      </Section>
-
       {/* ====== GALLERY con paginazione (20 per pagina) ====== */}
       <Section
         title="Gallery"
@@ -188,6 +171,23 @@ export default function Gallery() {
             idx={idx}
             setIdx={setIdx}
             items={IMGS}
+          />
+        </motion.section>
+      </Section>
+
+      {/* ====== SOCIAL (Instagram, card a palette scura) ====== */}
+      <Section title="Social" kicker="Instagram">
+        <motion.section
+          className="max-w-7xl mx-auto px-4 py-8"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <InstagramEmbedsFixed
+            postUrls={INSTAGRAM_POSTS}
+            cols={{ base: 1, md: 2, lg: 3 }}
+            height="34rem" // puoi cambiare l’altezza fissa
           />
         </motion.section>
       </Section>
