@@ -159,6 +159,11 @@ const GROUPS = [
         role: "Helper",
         bio: "Dal tono di voce soave, in full mood RP.",
       },
+      {
+        name: "Francyy",
+        role: "Helper",
+        bio: "Sempre disponibile ed efficiente",
+      },
     ],
   },
 ];
