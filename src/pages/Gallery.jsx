@@ -6,6 +6,9 @@ import heroBg from "../assets/banner.png";
 import logo from "../assets/logo.gif";
 import { motion, useReducedMotion } from "framer-motion";
 
+// NEW
+import InstagramEmbedsFixed from "../components/InstagramEmbedsFixed.jsx";
+
 const IMGS = [
   "https://i.imgur.com/Qg8KMKY.png",
   "https://i.imgur.com/DrU3CtH.png",
@@ -46,9 +49,25 @@ const IMGS = [
   "https://i.imgur.com/iFMBho1.png",
 ];
 
+// I 3 post che hai passato (permalink puliti)
+const INSTAGRAM_POSTS = [
+  "https://www.instagram.com/p/DOsvgWRDKMN/",
+  "https://www.instagram.com/p/DOstKLyDJFe/",
+  "https://www.instagram.com/p/DOstmc6jLp7/",
+];
+
+// PAGINAZIONE
+const PAGE_SIZE = 20;
+
 export default function Gallery() {
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
+
+  // paginazione locale
+  const [page, setPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(IMGS.length / PAGE_SIZE));
+  const start = (page - 1) * PAGE_SIZE;
+  const pageItems = IMGS.slice(start, start + PAGE_SIZE);
 
   useEffect(() => {
     return () => {
@@ -56,7 +75,6 @@ export default function Gallery() {
     };
   }, []);
 
-  // Framer Motion variants (rispettano prefers-reduced-motion)
   const reduce = useReducedMotion();
   const fadeIn = {
     hidden: { opacity: 0, y: reduce ? 0 : 20 },
@@ -67,82 +85,112 @@ export default function Gallery() {
     show: { transition: { delayChildren: delay, staggerChildren: step } },
   });
 
+  const onThumbClick = (localIndex) => {
+    setIdx(start + localIndex); // indice globale per la Lightbox
+    setOpen(true);
+  };
+
+  const nextPage = () => setPage((p) => Math.min(totalPages, p + 1));
+  const prevPage = () => setPage((p) => Math.max(1, p - 1));
+
   return (
-    <Section title="Gallery" kicker="FALLEN V1">
-      <motion.section
-        className="max-w-7xl mx-auto px-4 py-8"
-        title="Galleria"
-        kicker="feature"
-        variants={fadeIn}
-        initial="hidden"
-        animate="show"
-      >
-        {/* Griglia immagini */}
-        <motion.ul
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-          variants={stagger(0.05, 0.07)}
+    <>
+      {/* ====== SOCIAL (Instagram, card a palette scura) ====== */}
+      <Section title="Social" kicker="Instagram">
+        <motion.section
+          className="max-w-7xl mx-auto px-4 py-8"
+          variants={fadeIn}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {IMGS.map((src, i) => (
-            <motion.li key={i} variants={fadeIn}>
-              <button
-                onClick={() => {
-                  setIdx(i);
-                  setOpen(true);
-                }}
-                className="group relative w-full overflow-hidden rounded-2xl border border-[#262520] bg-[#0D0C0A]/40 hover:bg-[#0D0C0A]/60 transition-colors focus:outline-none focus:ring-2 focus:ring-[#736751]/70"
-                aria-label={`Apri immagine ${i + 1}`}
-              >
-                {/* Wrapper con aspect ratio; usa arbitrary property per non dipendere dal plugin */}
-                <div className="relative [aspect-ratio:4/3]">
-                  {/* IMG: zoom on hover */}
-                  <img
-                    src={src}
-                    alt={`Anteprima ${i + 1}`}
-                    className="h-40 sm:h-60 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.06] will-change-transform"
-                    loading="lazy"
-                    decoding="async"
-                    draggable={false}
-                  />
+          <InstagramEmbedsFixed
+            postUrls={INSTAGRAM_POSTS}
+            cols={{ base: 1, md: 2, lg: 3 }}
+            height="34rem" // puoi cambiare l’altezza fissa
+          />
+        </motion.section>
+      </Section>
 
-                  {/* Overlay graduale */}
-                  <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+      {/* ====== GALLERY con paginazione (20 per pagina) ====== */}
+      <Section
+        title="Gallery"
+        kicker={`FALLEN V1 · Pagina ${page}/${totalPages}`}
+      >
+        <motion.section
+          className="max-w-7xl mx-auto px-4 py-8"
+          title="Galleria"
+          kicker="feature"
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+        >
+          {/* Griglia immagini paginata */}
+          <motion.ul
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            variants={stagger(0.05, 0.07)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {pageItems.map((src, i) => (
+              <motion.li key={start + i} variants={fadeIn}>
+                <button
+                  onClick={() => onThumbClick(i)}
+                  className="group relative w-full overflow-hidden rounded-2xl border border-[#262520] bg-[#0D0C0A]/40 hover:bg-[#0D0C0A]/60 transition-colors focus:outline-none focus:ring-2 focus:ring-[#736751]/70"
+                  aria-label={`Apri immagine ${start + i + 1}`}
+                >
+                  <div className="relative [aspect-ratio:4/3]">
+                    <img
+                      src={src}
+                      alt={`Anteprima ${start + i + 1}`}
+                      className="h-40 sm:h-60 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.06] will-change-transform"
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                    <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                    <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg border border-[#736751]/40 bg-[#0D0C0A]/60 px-2 py-1 text-[11px] text-[#A69981] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Apri
+                    </span>
+                  </div>
+                </button>
+              </motion.li>
+            ))}
+          </motion.ul>
 
-                  {/* Chip “Apri” con lente (inline svg) */}
-                  <span className="pointer-events-none absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-lg border border-[#736751]/40 bg-[#0D0C0A]/60 px-2 py-1 text-[11px] text-[#A69981] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg
-                      viewBox="0 0 24 24"
-                      width="14"
-                      height="14"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <path d="M21 21l-3.5-3.5"></path>
-                    </svg>
-                    Apri
-                  </span>
-                </div>
-              </button>
-            </motion.li>
-          ))}
-        </motion.ul>
+          {/* Paginazione */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            <button
+              onClick={prevPage}
+              disabled={page === 1}
+              className="px-3 py-1.5 rounded-md border border-[#736751]/40 text-[#A69981] disabled:opacity-40 hover:bg-[#0D0C0A]/60"
+            >
+              ← Prec.
+            </button>
+            <div className="text-sm text-[#A69981]">
+              Pagina <span className="font-semibold">{page}</span> /{" "}
+              {totalPages}
+            </div>
+            <button
+              onClick={nextPage}
+              disabled={page === totalPages}
+              className="px-3 py-1.5 rounded-md border border-[#736751]/40 text-[#A69981] disabled:opacity-40 hover:bg-[#0D0C0A]/60"
+            >
+              Succ. →
+            </button>
+          </div>
 
-        {/* Lightbox */}
-        <Lightbox
-          open={open}
-          onClose={() => setOpen(false)}
-          idx={idx}
-          setIdx={setIdx}
-          items={IMGS}
-        />
-      </motion.section>
-    </Section>
+          {/* Lightbox (usa l’array completo IMGS) */}
+          <Lightbox
+            open={open}
+            onClose={() => setOpen(false)}
+            idx={idx}
+            setIdx={setIdx}
+            items={IMGS}
+          />
+        </motion.section>
+      </Section>
+    </>
   );
 }
