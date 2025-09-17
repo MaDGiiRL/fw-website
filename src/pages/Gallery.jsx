@@ -1,13 +1,11 @@
+// src/pages/Gallery.jsx
 import { useState, useEffect } from "react";
 import Lightbox from "../components/Lightbox";
 import { Section } from "../components/Section.jsx";
-import DiscordBanner from "../components/DiscordBanner.jsx";
-import heroBg from "../assets/banner.png";
-import logo from "../assets/logo.gif";
 import { motion, useReducedMotion } from "framer-motion";
 
 // NEW
-import InstagramEmbedsFixed from "../components/InstagramEmbedsFixed.jsx";
+import InstagramCarousel from "../components/InstagramCarousel.jsx";
 
 const IMGS = [
   "https://i.imgur.com/Qg8KMKY.png",
@@ -52,8 +50,10 @@ const IMGS = [
 // I 3 post che hai passato (permalink puliti)
 const INSTAGRAM_POSTS = [
   "https://www.instagram.com/p/DOsvgWRDKMN/",
+  "https://www.instagram.com/p/DOsvNk4jGz4/",
   "https://www.instagram.com/p/DOstKLyDJFe/",
   "https://www.instagram.com/p/DOstmc6jLp7/",
+  "https://www.instagram.com/p/DOstZ7OjEEs/",
 ];
 
 // PAGINAZIONE
@@ -85,13 +85,34 @@ export default function Gallery() {
     show: { transition: { delayChildren: delay, staggerChildren: step } },
   });
 
+  const scrollToGalleryTop = () => {
+    requestAnimationFrame(() => {
+      document
+        .querySelector('[title="Galleria"]')
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   const onThumbClick = (localIndex) => {
     setIdx(start + localIndex); // indice globale per la Lightbox
     setOpen(true);
   };
 
-  const nextPage = () => setPage((p) => Math.min(totalPages, p + 1));
-  const prevPage = () => setPage((p) => Math.max(1, p - 1));
+  const nextPage = () => {
+    setPage((p) => {
+      const np = Math.min(totalPages, p + 1);
+      scrollToGalleryTop();
+      return np;
+    });
+  };
+
+  const prevPage = () => {
+    setPage((p) => {
+      const np = Math.max(1, p - 1);
+      scrollToGalleryTop();
+      return np;
+    });
+  };
 
   return (
     <>
@@ -101,6 +122,7 @@ export default function Gallery() {
         kicker={`FALLEN V1 · Pagina ${page}/${totalPages}`}
       >
         <motion.section
+          key={`gallery-wrapper-p${page}`} // remount su cambio pagina
           className="max-w-7xl mx-auto px-4 py-8"
           title="Galleria"
           kicker="feature"
@@ -110,6 +132,7 @@ export default function Gallery() {
         >
           {/* Griglia immagini paginata */}
           <motion.ul
+            key={`grid-p${page}`} // remount griglia su cambio pagina
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             variants={stagger(0.05, 0.07)}
             initial="hidden"
@@ -119,6 +142,7 @@ export default function Gallery() {
             {pageItems.map((src, i) => (
               <motion.li key={start + i} variants={fadeIn}>
                 <button
+                  type="button"
                   onClick={() => onThumbClick(i)}
                   className="group relative w-full overflow-hidden rounded-2xl border border-[#262520] bg-[#0D0C0A]/40 hover:bg-[#0D0C0A]/60 transition-colors focus:outline-none focus:ring-2 focus:ring-[#736751]/70"
                   aria-label={`Apri immagine ${start + i + 1}`}
@@ -145,6 +169,7 @@ export default function Gallery() {
           {/* Paginazione */}
           <div className="mt-6 flex items-center justify-center gap-2">
             <button
+              type="button"
               onClick={prevPage}
               disabled={page === 1}
               className="px-3 py-1.5 rounded-md border border-[#736751]/40 text-[#A69981] disabled:opacity-40 hover:bg-[#0D0C0A]/60"
@@ -156,6 +181,7 @@ export default function Gallery() {
               {totalPages}
             </div>
             <button
+              type="button"
               onClick={nextPage}
               disabled={page === totalPages}
               className="px-3 py-1.5 rounded-md border border-[#736751]/40 text-[#A69981] disabled:opacity-40 hover:bg-[#0D0C0A]/60"
@@ -184,10 +210,13 @@ export default function Gallery() {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <InstagramEmbedsFixed
+          <InstagramCarousel
             postUrls={INSTAGRAM_POSTS}
-            cols={{ base: 1, md: 2, lg: 3 }}
-            height="34rem" // puoi cambiare l’altezza fissa
+            height="34rem"
+            autoplayMs={6000}
+            pauseOnHover={true}
+            showArrows={true}
+            showDots={true}
           />
         </motion.section>
       </Section>
