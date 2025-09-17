@@ -162,7 +162,7 @@ const GROUPS = [
       {
         name: "Francyy",
         role: "Helper",
-        bio: "Sempre disponibile ed efficiente",
+        bio: "Scherzo calibrato, cuore aperto: prima viene il cuore, poi una battuta sui ticket aperti che dà il via a soluzioni concrete.",
       },
     ],
   },
