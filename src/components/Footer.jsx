@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Shield, MessageCircle } from "lucide-react";
+import { FileText, Shield, MessageCircle, Instagram } from "lucide-react";
 import TermsModal from "./TermsModal.jsx";
 import PrivacyModal from "./PrivacyModal.jsx";
 
@@ -28,7 +28,8 @@ export default function Footer() {
               label="Privacy"
               onClick={() => setOpenPrivacy(true)}
             />
-            {/* Discord: link esterno */}
+
+            {/* Discord */}
             <a
               href="https://discord.gg/p8pPKJ6Sex"
               target="_blank"
@@ -40,6 +41,20 @@ export default function Footer() {
                 <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.75} />
               </span>
               <span className="text-xs sm:text-sm">Discord</span>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/fallen_world_rp"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#736751]/40 text-[#D9CAB8]/90 bg-[#0D0C0A]/40 hover:bg-[#262520]/60 transition focus:outline-none focus:ring-2 focus:ring-[#736751]/50"
+            >
+              <span className="relative inline-grid w-6 h-6 place-items-center rounded-lg bg-[#262520] border border-[#736751]/40 text-[#A69981]">
+                <span className="pointer-events-none absolute inset-0 rounded-lg ring-0 ring-[#A69981]/0 group-hover:ring-2 group-hover:ring-[#A69981]/40 transition" />
+                <Instagram className="w-3.5 h-3.5" strokeWidth={1.75} />
+              </span>
+              <span className="text-xs sm:text-sm">Instagram</span>
             </a>
           </div>
 
