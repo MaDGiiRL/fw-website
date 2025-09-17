@@ -225,7 +225,7 @@ export default function Home() {
             {
               t: "Motel Paleto",
               d: "Stanze sgangherate, neon sfarfallanti e segreti di passaggio. Qui ogni porta nasconde una storia.",
-              tags: ["BIT"],
+              tags: ["BIT", "OCCUPATA"],
             },
             {
               t: "Antenna",
