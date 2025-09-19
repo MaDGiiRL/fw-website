@@ -14,7 +14,6 @@ export default function Lore() {
         "Nikelino",
         "Kiwy",
         "Arianna",
-        "Haru 🐼",
       ],
     },
     {
@@ -25,7 +24,6 @@ export default function Lore() {
         "Violetzxヅ",
         "Shino",
         "Anastasia",
-        "Snooky 🐼",
         "Chesy",
       ],
     },
