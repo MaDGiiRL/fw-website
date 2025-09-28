@@ -17,7 +17,6 @@ export default function Lore() {
         "MaDGiiRL",
         "Violetzxヅ",
         "Draco",
-        "Shino",
         "Anastasia",
         "Chesy",
         "Francy",
