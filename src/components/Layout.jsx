@@ -7,6 +7,9 @@ import Footer from "./Footer.jsx";
 import TermsModal from "./TermsModal.jsx";
 import PrivacyModal from "./PrivacyModal.jsx";
 
+// Import del banner memoriale
+import KevinMemorialBanner from "./KevinMemorialBanner.jsx";
+
 export default function Layout() {
   const [showBanner, setShowBanner] = useState(false);
   const [openTerms, setOpenTerms] = useState(false);
@@ -24,7 +27,6 @@ export default function Layout() {
 
   const handleReject = () => {
     // Comportamento su rifiuto: per ora chiudo il banner.
-    // Se vuoi, qui puoi reindirizzare o bloccare l’uso del sito.
     setShowBanner(false);
   };
 
@@ -44,6 +46,14 @@ export default function Layout() {
       <main className="relative z-10">
         <Outlet />
       </main>
+
+      {/* Banner memoriale per Kevin */}
+      <KevinMemorialBanner
+        photoUrl="https://i.imgur.com/kOBoSyn.png"
+        dismissible={true}
+        persistence="none" // <- non memorizza la chiusura
+      />
+
       <Footer />
 
       {/* Banner accetta/rifiuta con link alle modali */}
@@ -83,7 +93,7 @@ export default function Layout() {
         </div>
       )}
 
-      {/* Modali globali aperte dal banner */}
+      {/* Modali globali */}
       <TermsModal open={openTerms} onClose={() => setOpenTerms(false)} />
       <PrivacyModal open={openPrivacy} onClose={() => setOpenPrivacy(false)} />
     </div>
