@@ -5,16 +5,10 @@ import { motion, useReducedMotion } from "framer-motion";
 
 export default function Lore() {
   const TEAM = [
-    { group: "Responsabile Lore", names: ["Nikelino"] },
+    { group: "Responsabile Lore", names: ["Shino"] },
     {
       group: "Master",
-      names: [
-        "BullMatt41",
-        "Christian",
-        "Nikelino",
-        "Kiwy",
-        "Arianna",
-      ],
+      names: ["BullMatt41", "Christian", "Kiwy", "Arianna", "Jhonno"],
     },
     {
       group: "Co-Master",
@@ -26,6 +20,8 @@ export default function Lore() {
         "Shino",
         "Anastasia",
         "Chesy",
+        "Francy",
+        "Katra",
       ],
     },
     { group: "Supporto Team Lore", names: ["Gondola"] },

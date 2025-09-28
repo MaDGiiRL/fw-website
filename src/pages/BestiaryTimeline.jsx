@@ -41,14 +41,14 @@ export default function BestiaryTimeline() {
       allies: ["Vampiri", "Draghi", "Lycan", "Varkanys"],
       desc: "Mistiche del mare e dei fiumi. Creature di bellezza ingannevole, le Sirene intrecciano melodie che possono curare l’animo o trascinarlo nella follia. La loro voce è dono e maledizione: incanta i cuori deboli, spezza la volontà dei forti. Vivono in un equilibrio instabile fra diplomazia e ferocia, poiché il mare è mutevole come il loro animo. Sono cortesi alleate o nemiche spietate, e mai si rivelano del tutto: chi le ascolta non può più tornare indietro senza portare con sé un frammento del loro canto.",
     },
-    {
-      id: "maghi",
-      name: "Maghi",
-      img: "https://i.imgur.com/yD9TvYG.jpeg",
-      orientation: "Legale-Neutrale",
-      allies: ["Vampiri", "Draghi", "Lycan", "Varkanys"],
-      desc: "I Maghi sono il riflesso di due forze opposte e complementari. Il Fuoco incarna l’istinto, la passione e l’impeto che travolge, capace di distruggere ma anche di rinascere dalle proprie ceneri. È ardore, impulso vitale, energia che brucia senza compromessi. Il Ghiaccio rappresenta invece la calma, la disciplina e la freddezza che preserva. È chiarezza, silenzio cristallino e forza che resiste immutabile al tempo. Insieme non sono rivali, ma poli di un equilibrio: il calore che muove e il gelo che custodisce.",
-    },
+    // {
+    //   id: "maghi",
+    //   name: "Maghi",
+    //   img: "https://i.imgur.com/yD9TvYG.jpeg",
+    //   orientation: "Legale-Neutrale",
+    //   allies: ["Vampiri", "Draghi", "Lycan", "Varkanys"],
+    //   desc: "I Maghi sono il riflesso di due forze opposte e complementari. Il Fuoco incarna l’istinto, la passione e l’impeto che travolge, capace di distruggere ma anche di rinascere dalle proprie ceneri. È ardore, impulso vitale, energia che brucia senza compromessi. Il Ghiaccio rappresenta invece la calma, la disciplina e la freddezza che preserva. È chiarezza, silenzio cristallino e forza che resiste immutabile al tempo. Insieme non sono rivali, ma poli di un equilibrio: il calore che muove e il gelo che custodisce.",
+    // },
     {
       id: "draghi",
       name: "Draghi",

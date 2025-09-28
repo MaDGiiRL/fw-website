@@ -32,19 +32,19 @@ const GROUPS = [
       },
     ],
   },
-  {
-    label: "FOUNDER",
-    Icon: Rocket,
-    glow: "bg-[radial-gradient(closest-side,rgba(96,165,250,0.45),transparent)]",
-    chipClass: "text-blue-300 border-blue-400/40",
-    members: [
-      {
-        name: "Nikelino_K",
-        role: "Founder",
-        bio: "Meme vivente: trasforma i bug in feature e le feature in leggende.",
-      },
-    ],
-  },
+  // {
+  //   label: "FOUNDER",
+  //   Icon: Rocket,
+  //   glow: "bg-[radial-gradient(closest-side,rgba(96,165,250,0.45),transparent)]",
+  //   chipClass: "text-blue-300 border-blue-400/40",
+  //   members: [
+  //     {
+  //       name: "Nikelino_K",
+  //       role: "Founder",
+  //       bio: "Meme vivente: trasforma i bug in feature e le feature in leggende.",
+  //     },
+  //   ],
+  // },
 
   /* === Developers === */
   {
@@ -96,11 +96,6 @@ const GROUPS = [
         bio: "Sempre pronto a scherzare: bug fix con battuta incorporata.",
       },
       {
-        name: "Gondola",
-        role: "Admin",
-        bio: "Anima dolce e gentile: calma i flame con una carezza.",
-      },
-      {
         name: "Paranoica.",
         role: "Admin",
         bio: "Silenziosa ma si sente: entra piano, sistema tutto e scompare.",
@@ -119,9 +114,19 @@ const GROUPS = [
         bio: "Dolce e sempre disponibile: il ticket si sveglia ed è già risolto.",
       },
       {
-        name: "Chesy",
+        name: "Gondola",
         role: "HeadMod",
-        bio: "L’amico del cazzeggio: meme di qualità, moderazione quando serve.",
+        bio: "Anima dolce e gentile: calma i flame con una carezza.",
+      },
+      {
+        name: "Draco434",
+        role: "HeadMod",
+        bio: "Competente e simpatico: manuale vivente con smile incluso.",
+      },
+      {
+        name: "Jhonno",
+        role: "HeadMod",
+        bio: "Competente e simpatico: risolve e fa ridere nello stesso minuto.",
       },
     ],
   },
@@ -132,14 +137,14 @@ const GROUPS = [
     chipClass: "text-sky-300 border-sky-400/40",
     members: [
       {
-        name: "Draco434",
+        name: "Francyy",
         role: "Mod",
-        bio: "Competente e simpatico: manuale vivente con smile incluso.",
+        bio: "Scherzo calibrato, cuore aperto: prima viene il cuore, poi una battuta sui ticket aperti che dà il via a soluzioni concrete.",
       },
       {
-        name: "Jhonno",
+        name: "Katra",
         role: "Mod",
-        bio: "Competente e simpatico: risolve e fa ridere nello stesso minuto.",
+        bio: "Tipetto simpatico con grande senso dell'umorismo.",
       },
     ],
   },
@@ -150,19 +155,24 @@ const GROUPS = [
     chipClass: "text-teal-300 border-teal-400/40",
     members: [
       {
-        name: "Katra",
+        name: "Giusy",
         role: "Helper",
-        bio: "Tipetto simpatico con grande senso dell'umorismo.",
+        bio: "Sempre pronta a dare una mano con gentilezza e precisione, trasforma anche i problemi più spinosi in soluzioni semplici e chiare.",
       },
       {
-        name: "Shino",
+        name: "Siciliano",
         role: "Helper",
-        bio: "Dal tono di voce soave, in full mood RP.",
+        bio: "Diretto, pratico ed efficace: con il suo stile deciso trova sempre la strada giusta per arrivare al risultato.",
       },
       {
-        name: "Francyy",
+        name: "GodofAxe",
         role: "Helper",
-        bio: "Scherzo calibrato, cuore aperto: prima viene il cuore, poi una battuta sui ticket aperti che dà il via a soluzioni concrete.",
+        bio: "Metodico, affidabile e con una marcia in più quando c’è da risolvere le sfide più dure.",
+      },
+      {
+        name: "It's Blue",
+        role: "Helper",
+        bio: "Creativo e brillante, porta sempre freschezza e nuove idee. Il suo tocco “blue” rende ogni situazione più serena ed equilibrata.",
       },
     ],
   },

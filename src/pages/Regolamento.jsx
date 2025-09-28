@@ -135,208 +135,208 @@ const DATA = {
   },
 
   // ====== TAB: CREATURE con card raggruppate ======
-  Creature: {
-    "📖 Introduzione": [
-      {
-        body: [
-          "Le creature rappresentano razze antiche, uniche e potenti, ognuna con la propria storia e natura.",
-          "Chi sceglie di interpretarle deve rispettare i limiti stabiliti, sia per garantire coerenza narrativa sia per preservare l’equilibrio tra tutte le fazioni.",
-        ],
-      },
-    ],
+  // Creature: {
+  //   "📖 Introduzione": [
+  //     {
+  //       body: [
+  //         "Le creature rappresentano razze antiche, uniche e potenti, ognuna con la propria storia e natura.",
+  //         "Chi sceglie di interpretarle deve rispettare i limiti stabiliti, sia per garantire coerenza narrativa sia per preservare l’equilibrio tra tutte le fazioni.",
+  //       ],
+  //     },
+  //   ],
 
-    "🔒 Limiti comunitari": [
-      {
-        title: "Limiti comunitari",
-        body: "Ogni comunità può accogliere al massimo 15 membri, distribuiti secondo queste possibilità:",
-        list: [
-          "4 Maghi o Sirene + 4 Draghi + 7 Lycan",
-          "4 Maghi o Sirene + 4 Vampiri + 7 Valkaris",
-        ],
-      },
-    ],
+  //   "🔒 Limiti comunitari": [
+  //     {
+  //       title: "Limiti comunitari",
+  //       body: "Ogni comunità può accogliere al massimo 15 membri, distribuiti secondo queste possibilità:",
+  //       list: [
+  //         "4 Maghi o Sirene + 4 Draghi + 7 Lycan",
+  //         "4 Maghi o Sirene + 4 Vampiri + 7 Valkaris",
+  //       ],
+  //     },
+  //   ],
 
-    "🔥❄️ Maghi (Fuoco e Ghiaccio)": [
-      {
-        body: [
-          "I maghi sono studiosi dell’energia elementale, devoti all’equilibrio tra creazione e distruzione.",
-          "La loro magia si manifesta principalmente nel Fuoco e nel Ghiaccio, con capacità offensive e difensive.",
-          "Sono considerati neutrali, ma le loro scelte personali li possono avvicinare a benevolenza o crudeltà.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Anziano (guida e custode della conoscenza)",
-          "Maestro (colui che istruisce)",
-          "Apprendista",
-        ],
-      },
-      {
-        title: "Regole",
-        list: [
-          "Possono brandire solo armi bianche o archi.",
-          "In invisibilità non possono usare incantesimi, né armi o pugni.",
-          "Non è consentito rivelare dettagli o introdurre umani nella sede magica, protetta da sigilli.",
-        ],
-      },
-    ],
+  //   "🔥❄️ Maghi (Fuoco e Ghiaccio)": [
+  //     {
+  //       body: [
+  //         "I maghi sono studiosi dell’energia elementale, devoti all’equilibrio tra creazione e distruzione.",
+  //         "La loro magia si manifesta principalmente nel Fuoco e nel Ghiaccio, con capacità offensive e difensive.",
+  //         "Sono considerati neutrali, ma le loro scelte personali li possono avvicinare a benevolenza o crudeltà.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Anziano (guida e custode della conoscenza)",
+  //         "Maestro (colui che istruisce)",
+  //         "Apprendista",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: [
+  //         "Possono brandire solo armi bianche o archi.",
+  //         "In invisibilità non possono usare incantesimi, né armi o pugni.",
+  //         "Non è consentito rivelare dettagli o introdurre umani nella sede magica, protetta da sigilli.",
+  //       ],
+  //     },
+  //   ],
 
-    "📜 Scuola di magia / biblioteca": [
-      {
-        title: "Scuola di magia / Biblioteca",
-        list: [
-          "Tutte le porte con doorlock non sono visibili perché protette dalla magia.",
-          "Le scale che scendono non sono visibili ai player.",
-          "Non sarà possibile attaccare la biblioteca essendo protetta dalla magia.",
-        ],
-      },
-    ],
+  //   "📜 Scuola di magia / biblioteca": [
+  //     {
+  //       title: "Scuola di magia / Biblioteca",
+  //       list: [
+  //         "Tutte le porte con doorlock non sono visibili perché protette dalla magia.",
+  //         "Le scale che scendono non sono visibili ai player.",
+  //         "Non sarà possibile attaccare la biblioteca essendo protetta dalla magia.",
+  //       ],
+  //     },
+  //   ],
 
-    "🌊 Sirene (Curatrici)": [
-      {
-        body: [
-          "Creature legate al mare e al canto, custodi della guarigione e della vitalità.",
-          "Non si nutrono come gli umani: la loro energia deriva dalle acque e dall’armonia delle loro melodie.",
-          "Considerate neutrali, si pongono spesso come mediatrici o guaritrici.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Myrrena — Suprema delle Correnti",
-          "Liryenne — Custode degli Abissi",
-          "Orysha — Sovrana delle Onde",
-          "Vaelith — Custode delle Maree",
-          "Selora — Veggente delle Profondità",
-          "Nimara — Sirena Errante",
-        ],
-      },
-      {
-        title: "Regole",
-        list: [
-          "Sono focalizzate sulla cura e il sostegno, non sullo scontro diretto.",
-          "Non possono assumere alcool o droghe (nessun effetto sul loro corpo).",
-          "I loro poteri curativi sono legati al canto o al contatto con l’acqua.",
-        ],
-      },
-    ],
+  //   "🌊 Sirene (Curatrici)": [
+  //     {
+  //       body: [
+  //         "Creature legate al mare e al canto, custodi della guarigione e della vitalità.",
+  //         "Non si nutrono come gli umani: la loro energia deriva dalle acque e dall’armonia delle loro melodie.",
+  //         "Considerate neutrali, si pongono spesso come mediatrici o guaritrici.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Myrrena — Suprema delle Correnti",
+  //         "Liryenne — Custode degli Abissi",
+  //         "Orysha — Sovrana delle Onde",
+  //         "Vaelith — Custode delle Maree",
+  //         "Selora — Veggente delle Profondità",
+  //         "Nimara — Sirena Errante",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: [
+  //         "Sono focalizzate sulla cura e il sostegno, non sullo scontro diretto.",
+  //         "Non possono assumere alcool o droghe (nessun effetto sul loro corpo).",
+  //         "I loro poteri curativi sono legati al canto o al contatto con l’acqua.",
+  //       ],
+  //     },
+  //   ],
 
-    "⚡🐉 Draghi (Ombra e Fulmini)": [
-      {
-        body: [
-          "Antichi esseri provenienti da un’epoca primordiale. Sopravvissuti allo sterminio, hanno appreso l’arte di assumere forma umana.",
-          "Controllano i poteri di Ombra e Fulmini, rendendoli temuti e rispettati.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Rinnegato — i più bassi nella scala sociale, marchiati dall’esilio e privati dell’onore.",
-          "Segugio — guerrieri fedeli e cacciatori, fanno parte del clan dell’Arconte.",
-          "Arconte — leader di clan e comandanti supremi sui segugi; garanti dell’ordine e delle leggi draconiche.",
-          "Sovrano — custode del potere più antico, governa l’equilibrio tra i clan e le alleanze millenarie.",
-          "Primordiale — l’origine vivente della stirpe draconica; entità rarissima e supremamente autorevole.",
-        ],
-      },
-      {
-        title: "Regole",
-        list: [
-          "Non possono assumere alcool o droghe (nessun effetto sul loro corpo).",
-        ],
-      },
-    ],
+  //   "⚡🐉 Draghi (Ombra e Fulmini)": [
+  //     {
+  //       body: [
+  //         "Antichi esseri provenienti da un’epoca primordiale. Sopravvissuti allo sterminio, hanno appreso l’arte di assumere forma umana.",
+  //         "Controllano i poteri di Ombra e Fulmini, rendendoli temuti e rispettati.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Rinnegato — i più bassi nella scala sociale, marchiati dall’esilio e privati dell’onore.",
+  //         "Segugio — guerrieri fedeli e cacciatori, fanno parte del clan dell’Arconte.",
+  //         "Arconte — leader di clan e comandanti supremi sui segugi; garanti dell’ordine e delle leggi draconiche.",
+  //         "Sovrano — custode del potere più antico, governa l’equilibrio tra i clan e le alleanze millenarie.",
+  //         "Primordiale — l’origine vivente della stirpe draconica; entità rarissima e supremamente autorevole.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: [
+  //         "Non possono assumere alcool o droghe (nessun effetto sul loro corpo).",
+  //       ],
+  //     },
+  //   ],
 
-    "🌑 Varkanys (Creature d’Ombra)": [
-      {
-        body: [
-          "Entità oscure che traggono potere dalle tenebre. Vivono ai margini della società, nascondendosi nell’oscurità.",
-          "La loro esistenza si nutre della paura e della vitalità altrui.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Abyssal — Leader (Alpha): guida il gruppo e prende le decisioni finali.",
-          "Vesper — Secondo in comando (Beta): consigliere e braccio destro; addestra, coordina e mantiene disciplina.",
-          "Wraith (Omega) — supporto tattico; compiti meno nobili; può sacrificarsi se necessario; figura tendenzialmente solitaria.",
-        ],
-      },
-      {
-        title: "Regole",
-        list: ["Possono sfruttare illusioni e manipolazioni dell’ombra."],
-      },
-    ],
+  //   "🌑 Varkanys (Creature d’Ombra)": [
+  //     {
+  //       body: [
+  //         "Entità oscure che traggono potere dalle tenebre. Vivono ai margini della società, nascondendosi nell’oscurità.",
+  //         "La loro esistenza si nutre della paura e della vitalità altrui.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Abyssal — Leader (Alpha): guida il gruppo e prende le decisioni finali.",
+  //         "Vesper — Secondo in comando (Beta): consigliere e braccio destro; addestra, coordina e mantiene disciplina.",
+  //         "Wraith (Omega) — supporto tattico; compiti meno nobili; può sacrificarsi se necessario; figura tendenzialmente solitaria.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: ["Possono sfruttare illusioni e manipolazioni dell’ombra."],
+  //     },
+  //   ],
 
-    "🐺 Lycan": [
-      {
-        body: [
-          "Lupi mannari dalla forza sovrumana e dai sensi sviluppati. Vivono in branco sotto la guida di un Alpha.",
-          "Sono soggetti a frenesia che li rende estremamente aggressivi.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Alpha degli Alpha (guida suprema)",
-          "Alpha (leader di branco)",
-          "Beta",
-          "Omega",
-        ],
-      },
-      {
-        title: "Regole",
-        list: [
-          "In forma ferale non sono punibili per bunnyhop: il salto è il loro movimento naturale.",
-          "Durante la frenesia, l’attacco contro chiunque incrocino non è considerato RDM.",
-          "I Lycan appena trasformati (prime 72 ore) possono aggredire più facilmente per istinto incontrollato.",
-          "Nessun effetto da droghe, alcool o tabacco.",
-          "Non possono trasportare corpi nemici in combattimento.",
-        ],
-      },
-    ],
+  //   "🐺 Lycan": [
+  //     {
+  //       body: [
+  //         "Lupi mannari dalla forza sovrumana e dai sensi sviluppati. Vivono in branco sotto la guida di un Alpha.",
+  //         "Sono soggetti a frenesia che li rende estremamente aggressivi.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Alpha degli Alpha (guida suprema)",
+  //         "Alpha (leader di branco)",
+  //         "Beta",
+  //         "Omega",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: [
+  //         "In forma ferale non sono punibili per bunnyhop: il salto è il loro movimento naturale.",
+  //         "Durante la frenesia, l’attacco contro chiunque incrocino non è considerato RDM.",
+  //         "I Lycan appena trasformati (prime 72 ore) possono aggredire più facilmente per istinto incontrollato.",
+  //         "Nessun effetto da droghe, alcool o tabacco.",
+  //         "Non possono trasportare corpi nemici in combattimento.",
+  //       ],
+  //     },
+  //   ],
 
-    "🦇 Vampiri": [
-      {
-        body: [
-          "Non-morti che prediligono le ombre alla luce. Si nutrono di sangue da cui traggono forza.",
-          "Possiedono velocità e forza superiori a quelle degli umani.",
-        ],
-      },
-      {
-        title: "Gerarchia",
-        list: [
-          "Anziano/Conciliatore",
-          "Conte",
-          "Principe (può creare progenie)",
-          "Progenie",
-          "Ghoul",
-        ],
-      },
-      {
-        title: "Regole",
-        list: [
-          "Il morso provoca stanchezza, piacere e amnesia parziale della vittima.",
-          "Droghe, alcol e farmaci non hanno alcun effetto.",
-          "Possono portare con sé al massimo 5 sacche di sangue.",
-          "Il morso deve sempre essere ruolato in scena, non usato come comando diretto in azione.",
-        ],
-      },
-    ],
+  //   "🦇 Vampiri": [
+  //     {
+  //       body: [
+  //         "Non-morti che prediligono le ombre alla luce. Si nutrono di sangue da cui traggono forza.",
+  //         "Possiedono velocità e forza superiori a quelle degli umani.",
+  //       ],
+  //     },
+  //     {
+  //       title: "Gerarchia",
+  //       list: [
+  //         "Anziano/Conciliatore",
+  //         "Conte",
+  //         "Principe (può creare progenie)",
+  //         "Progenie",
+  //         "Ghoul",
+  //       ],
+  //     },
+  //     {
+  //       title: "Regole",
+  //       list: [
+  //         "Il morso provoca stanchezza, piacere e amnesia parziale della vittima.",
+  //         "Droghe, alcol e farmaci non hanno alcun effetto.",
+  //         "Possono portare con sé al massimo 5 sacche di sangue.",
+  //         "Il morso deve sempre essere ruolato in scena, non usato come comando diretto in azione.",
+  //       ],
+  //     },
+  //   ],
 
-    "⚖️ Regole Generali": [
-      "Durante una singola azione è consentita una sola trasformazione.",
-      "È vietato usare la trasformazione per curarsi nei dungeon.",
-      "Tutte le creature non possono usare bende, antibiotici o pozioni, eccetto: Trasmutazione Terra, Aria, Acqua e Pozione del Vuoto.",
-      "Inattività di oltre 12 giorni senza ticket = wipe automatico del personaggio.",
-      "Non è possibile usare la trasformazione per rigenerare la vita in nessun caso.",
-      "In caso di perma, non si può tornare a interpretare la stessa razza con lo stesso o un nuovo PG immediato.",
-      "Durante una scena furia concessa da master, la creatura non sarà punibile di RDM.",
-      "I Lycan, grazie al loro salto, non sono punibili di bunnyhop.",
-      "Durante l’invisibilità di Vampiri e Maghi non è possibile utilizzare spell né tirare pugni.",
-      "Non è possibile “grabbare” creature trasformate, né morte né vive.",
-    ],
-  },
+  //   "⚖️ Regole Generali": [
+  //     "Durante una singola azione è consentita una sola trasformazione.",
+  //     "È vietato usare la trasformazione per curarsi nei dungeon.",
+  //     "Tutte le creature non possono usare bende, antibiotici o pozioni, eccetto: Trasmutazione Terra, Aria, Acqua e Pozione del Vuoto.",
+  //     "Inattività di oltre 12 giorni senza ticket = wipe automatico del personaggio.",
+  //     "Non è possibile usare la trasformazione per rigenerare la vita in nessun caso.",
+  //     "In caso di perma, non si può tornare a interpretare la stessa razza con lo stesso o un nuovo PG immediato.",
+  //     "Durante una scena furia concessa da master, la creatura non sarà punibile di RDM.",
+  //     "I Lycan, grazie al loro salto, non sono punibili di bunnyhop.",
+  //     "Durante l’invisibilità di Vampiri e Maghi non è possibile utilizzare spell né tirare pugni.",
+  //     "Non è possibile “grabbare” creature trasformate, né morte né vive.",
+  //   ],
+  // },
 };
 
 export default function Regolamento() {
