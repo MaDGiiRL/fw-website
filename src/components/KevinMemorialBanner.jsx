@@ -67,7 +67,7 @@ export default function KevinMemorialBanner({
           <p className="text-sm leading-snug">
             {message ?? (
               <>
-                <span className="font-bold text-base">✨ Kevin ✨</span>
+                <span className="font-bold text-base">✨ Ciao Kevin ✨</span>
                 <br />
                 <br />
                 <span className="italic">
@@ -81,18 +81,6 @@ export default function KevinMemorialBanner({
                 <span className="italic">
                   Un gigante buono, dal cuore fragile.
                 </span>
-                <br />
-                <br />
-                <span className="italic opacity-90">
-                  Mi chiamavi{" "}
-                  <span className="font-semibold">
-                    &quot;cattivona del mio cuore&quot;
-                  </span>
-                  …
-                  <br />
-                  <span className="italic">e così ti ricorderò sempre.</span>
-                </span>
-                <br />
                 <br />
                 <span className="font-medium">
                   Ci mancherai tanto.
