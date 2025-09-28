@@ -2,7 +2,7 @@ import { Section } from "../components/Section.jsx";
 import logo from "../../src/assets/logo.gif";
 import { ScrollText, Stars, Wand2, LifeBuoy } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-
+import { Sparkles } from "lucide-react";
 export default function Lore() {
   const TEAM = [
     { group: "Responsabile Lore", names: ["Shino"] },
@@ -18,7 +18,6 @@ export default function Lore() {
         "Violetzxヅ",
         "Draco",
         "Anastasia",
-        "Chesy",
         "Francy",
         "Katra",
       ],
@@ -201,8 +200,17 @@ export default function Lore() {
                   <h3 className="text-xl font-semibold text-[#D9CAB8]">
                     Team Lore
                   </h3>
-                  <p className="text-sm text-[#D9CAB8]/70 pt-5">
-                    Coerenza narrativa, timeline e approvazioni di trama.
+                  <p className=" text-[#D9CAB8]/70 pt-5">
+                    <div className="relative flex items-start gap-2">
+                      <p className="text-[#D9CAB8]/85">
+                        <span className="font-medium text-[#D9CAB8]">
+                          Siamo la prova
+                        </span>{" "}
+                        che la fantasia è meglio in co-op: stessi obiettivi,
+                        stessi meme, stessa passione per 
+                        <span className="text-[#A69981]"> Fallen World</span>.
+                      </p>
+                    </div>
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {TEAM.map((b, i) => {
