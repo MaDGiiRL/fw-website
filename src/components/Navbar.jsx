@@ -37,14 +37,14 @@ export default function Navbar() {
           >
             Regolamento
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/lore"
             className={({ isActive }) =>
               `${navLink} ${isActive ? "bg-[#262520]" : ""}`
             }
           >
             Lore
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/creature"
             className={({ isActive }) =>
@@ -61,14 +61,14 @@ export default function Navbar() {
           >
             Gallery
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/staff"
             className={({ isActive }) =>
               `${navLink} ${isActive ? "bg-[#262520]" : ""}`
             }
           >
             Staff
-          </NavLink>
+          </NavLink> */}
         </nav>
         {/* Mobile */}
         <details className="md:hidden">
@@ -96,14 +96,14 @@ export default function Navbar() {
               >
                 Regolamento
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/lore"
                 className={({ isActive }) =>
                   `${navLink} ${isActive ? "bg-[#262520]" : ""}`
                 }
               >
                 Lore
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 to="/gallery"
                 className={({ isActive }) =>
@@ -112,14 +112,14 @@ export default function Navbar() {
               >
                 Gallery
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/staff"
                 className={({ isActive }) =>
                   `${navLink} ${isActive ? "bg-[#262520]" : ""}`
                 }
               >
                 Staff
-              </NavLink>
+              </NavLink> */}
             </div>
           </div>
         </details>
